@@ -1,0 +1,35 @@
+# Styleguide based on airbnb's guide: https://github.com/airbnb/javascript
+---
+  extends:
+    - "airbnb-base"
+    - "plugin:prettier/recommended"
+  root: true
+  parser: "babel-eslint"
+  globals:
+    process: false
+  env:
+    browser: true
+    node: true
+  rules:
+    linebreak-style:
+      - error
+      - unix
+    no-magic-numbers:
+      - warn
+      -
+        ignoreArrayIndexes: true
+        ignore:
+          - 0
+          - 1
+    valid-jsdoc:
+      - warn
+    import/no-extraneous-dependencies:
+      - warn
+      - devDependencies:
+        - "**/*.spec.js"
+  overrides:
+    -
+      files:
+        - "**/*.spec.js"
+      env:
+        jest: true
