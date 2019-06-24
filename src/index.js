@@ -1,9 +1,3 @@
-import getConf from './getConf'
+import runner from './runner'
 
-const run = () => {
-  console.log(`Config:
-${JSON.stringify(getConf(), null, 2)}
-`)
-}
-
-export default run
+runner()
