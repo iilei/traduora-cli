@@ -11,6 +11,7 @@
     browser: true
     node: true
   rules:
+    "import/newline-after-import": ["error"]
     linebreak-style:
       - error
       - unix
@@ -30,6 +31,8 @@
   overrides:
     -
       files:
+        - "**/__mocks__/**"
         - "**/*.spec.js"
+        - "jestsetup.js"
       env:
         jest: true

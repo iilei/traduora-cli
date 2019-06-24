@@ -5,14 +5,17 @@
   "main": "lib/index.js",
   "scripts": {
     "tdd": "test --watch",
-    "test": "jest --coverage",
+    "test": "jest",
     "start": "node ./src/index.js --require @babel/register",
-    "eslint": "eslint src",
+    "eslint": "eslint src __mocks__",
     "build": "babel src --out-dir lib --ignore \"src/**/*.spec.js\"",
     "prepack": "node_modules/.bin/del lib ; npm run build"
   },
   "author": "Jochen Preusche <iilei@users.noreply.github.com>",
-  "license": "Unlicense",
+  "license": "MIT",
+  "dependencies": {
+    "cosmiconfig": "^5.2.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
@@ -34,13 +37,18 @@
   },
   "jest": {
     "coverageDirectory": "<rootDir>/coverage",
-    "collectCoverage": true,
+    "collectCoverage": false,
     "collectCoverageFrom": [
       "**/*.js",
-      "!coverage/**/*"
+      "!coverage/**/*",
+      "!lib/**/*"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jestsetup.js"
     ],
     "rootDir": "./",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "clearMocks": true
   },
   "engines": {
     "node": ">= 9.0.0",
@@ -63,11 +71,25 @@
       "git add"
     ]
   },
-  "dependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "test"
+      "pre-push": "npm test -- --coverage #"
     }
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
+  "traduora": {
+    "env-prefix": "TR",
+    "client-id": "test",
+    "locale": "en_GB",
+    "locales": [
+      "de_DE",
+      "en_GB"
+    ]
   }
 }

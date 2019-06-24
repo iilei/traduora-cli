@@ -1,5 +1,6 @@
 node_modules/
 coverage/
+lib
 
 *.tgz
 
@@ -13,3 +14,4 @@ logs
 #### Environment
 .env
 
+.traduorarc

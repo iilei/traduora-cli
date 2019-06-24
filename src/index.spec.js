@@ -1,7 +1,8 @@
-import index from "./index";
+import runner from './index'
 
-describe("index", () => {
-  it("should exist", () => {
-    expect(index).toBeDefined();
-  });
-});
+describe('index', () => {
+  it('should exist', () => {
+    expect(runner).toBeDefined()
+    runner()
+  })
+})
