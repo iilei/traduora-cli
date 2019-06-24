@@ -24,7 +24,7 @@ Note that the prefix itself is also configurable but it can not be set via envir
 | `client-id` | `{String}` | client id for the client credentials flow | `TR_CIENT_ID` |
 | `client-key`| `{String}` | **Warning** *take care not to expose it in version control* <br> client key for the client credentials flow | `TR_CIENT_KEY` |
 | `project-id` | `{String}` | traduora project ID | `TR_PROJECT_ID` |
-| `api-base` | `{String}` | `<scheme>://<host>/<basePath>` – e.g. `https://traduora.example.com/` or `https://example.com/traduora/` | `TR_API_BASE` |
+| `api-base` | `{String}` | `<scheme>://<host>/<basePath>` – e.g. `https://traduora.example.com/api/v1/` or `https://example.com/traduora/api/v1/` | `TR_API_BASE` |
 | `env-prefix` | `{String="TR"}` | Prefix to assume when interpolating environment variables for config options.  | n/a |
 | `locale` | `{String}` | locale for authoring translation terms | n/a |
 | `locales` | `{Array:<String>}` | locales to obtain from traduora | n/a |

@@ -11,6 +11,9 @@
     "build": "babel src --out-dir lib --ignore \"src/**/*.spec.js\"",
     "prepack": "node_modules/.bin/del lib ; npm run build"
   },
+  "bin": {
+    "traduora": "lib/index.js"
+  },
   "author": "Jochen Preusche <iilei@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {

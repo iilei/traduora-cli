@@ -1,8 +1,14 @@
 import getConf from '../getConf'
 
-const runner = () => {
+const tasks = ['pull', 'push']
+
+const runner = task => {
+  if (!task || !tasks.includes(task)) {
+    throw new Error(`Invalid task argument "${task}". Should be one of "${tasks.join('", "')}"`)
+  }
+
   console.log(`Config:
-${JSON.stringify(getConf(), null, 2)}
+${JSON.stringify({ ...getConf(), task }, null, 2)}
 `)
 }
 
