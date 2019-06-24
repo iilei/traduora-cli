@@ -2,12 +2,14 @@
   "name": "traduora-cli",
   "version": "0.0.1-canary-001-preview",
   "description": "",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "tdd": "test --watch",
     "test": "jest --coverage",
     "start": "node ./src/index.js --require @babel/register",
-    "eslint": "eslint src"
+    "eslint": "eslint src",
+    "build": "babel src --out-dir lib --ignore \"src/**/*.spec.js\"",
+    "prepack": "node_modules/.bin/del lib ; npm run build"
   },
   "author": "Jochen Preusche <iilei@users.noreply.github.com>",
   "license": "Unlicense",
@@ -19,6 +21,7 @@
     "@babel/register": "^7.4.4",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
+    "del-cli": "^2.0.0",
     "eslint": "^6.0.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^5.0.0",
