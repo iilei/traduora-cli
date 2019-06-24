@@ -7,6 +7,7 @@ const config = {
 
 const searchSync = jest.fn().mockImplementation(() => ({
   config,
+  filepath: '/abs-path/foo/package.json',
 }))
 
 const cosmiconfigMock = jest.fn(() => ({
