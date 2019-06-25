@@ -1,4 +1,4 @@
-import axios from './axios'
+import axios from './axiosInstance'
 
 const getAuthToken = async config => {
   return axios

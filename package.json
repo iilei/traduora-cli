@@ -38,10 +38,14 @@
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^2.4.1",
     "jest": "^24.8.0",
+    "jest-mock-axios": "^3.0.0",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2"
   },
   "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/lib/"
+    ],
     "coverageDirectory": "<rootDir>/coverage",
     "collectCoverage": false,
     "collectCoverageFrom": [

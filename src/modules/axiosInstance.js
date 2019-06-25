@@ -19,7 +19,7 @@ const setBaseUrl = baseUrl => {
 const axiosGet = async path =>
   instance
     .get(path)
-    .then(result => result.data.data)
+    .then(result => result.data)
     .catch(err => {
       throw new Error(err)
     })
