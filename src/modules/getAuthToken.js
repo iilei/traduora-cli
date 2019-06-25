@@ -1,14 +1,12 @@
 import axios from './axios'
 
-const getAccessToken = async config => {
-  const body = {
-    grantType: 'client_credentials',
-    clientId: config['client-id'],
-    clientSecret: config['client-secret'],
-  }
-
+const getAuthToken = async config => {
   return axios
-    .post('/auth/token', body)
+    .post('/auth/token', {
+      grantType: 'client_credentials',
+      clientId: config['client-id'],
+      clientSecret: config['client-secret'],
+    })
     .then(response => {
       return response.data.data.accessToken
     })
@@ -23,4 +21,4 @@ const getAccessToken = async config => {
     })
 }
 
-export default getAccessToken
+export default getAuthToken

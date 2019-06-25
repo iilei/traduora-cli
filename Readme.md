@@ -17,7 +17,7 @@ Options are set using one of the following
     traduora.config.js
 
 In combination with all-caps snake cased variants of the property names in `process.env`,
-prefixed with `TR`. E.g `TR_API_BASE` is equivalent to `api-base` in config files.
+prefixed with `TR`. E.g `TR_BASE_URL` is equivalent to `base-url` in config files.
 
 Note that the prefix itself is also configurable but it can not be set via environment variables.
 
@@ -35,7 +35,7 @@ Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
 | `client-id` | `{String}` | client id for the client credentials flow | `TR_CIENT_ID` |
 | `client-secret`| `{String}` | **Warning** *take care not to expose it in version control* <br> client key for the client credentials flow | `TR_CIENT_SECRET` |
 | `project-id` | `{String}` | traduora project ID | `TR_PROJECT_ID` |
-| `api-base` | `{String}` | `<scheme>://<host>/<basePath>` – e.g. `https://traduora.example.com/api/v1/` | `TR_API_BASE` |
+| `base-url` | `{String}` | `<scheme>://<host>/<basePath>` – e.g. `https://traduora.example.com/api/v1/` | `TR_BASE_URL` |
 | `env-prefix` | `{String="TR"}` | Prefix to assume when interpolating environment variables for config options.  | n/a |
 | `locale` | `{String}` | locale for authoring translation terms | n/a |
 | `locales` | `{Array<String>}` | locales to obtain from traduora | n/a |

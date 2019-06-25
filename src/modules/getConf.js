@@ -9,14 +9,14 @@ const defaultConfig = {
   'client-id': '',
   'client-secret': '',
   'project-id': '',
-  'api-base': '',
+  'base-url': '',
   'pull-to': `${rootDirPlaceholder}/intl/pull/<locale>.json`,
   'push-from': `${rootDirPlaceholder}/intl/push/<locale>.json`,
   'pull-format': 'jsonflat',
   'push-format': 'json',
 }
 
-const mayBeEnv = ['client-id', 'client-secret', 'project-id', 'api-base', 'root-dir']
+const mayBeEnv = ['client-id', 'client-secret', 'project-id', 'base-url', 'root-dir']
 
 const toEnvVar = key => key.toUpperCase().replace('-', '_')
 const toPrefixedEnvVar = (envPrefix, value) =>

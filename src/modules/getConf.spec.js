@@ -1,7 +1,7 @@
 import cosmiconfigMock from 'cosmiconfig'
 
 import getConf from './getConf'
-import { searchSync } from '../__mocks__/cosmiconfig'
+import { searchSync } from '../../__mocks__/cosmiconfig'
 
 jest.mock('cosmiconfig')
 
@@ -26,7 +26,7 @@ describe('getConf with default env-prefix', () => {
     expect(getConf()).toEqual(
       expect.objectContaining({
         'client-id': 'test',
-        'api-base': 'https://traduora.example.com/some-path/',
+        'base-url': 'https://traduora.example.com/some-path/',
       }),
     )
   })
