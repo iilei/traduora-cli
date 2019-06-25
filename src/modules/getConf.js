@@ -4,14 +4,15 @@ import cosmiconfig from 'cosmiconfig'
 const envPrefixProp = 'env-prefix'
 const rootDirProp = 'root-dir'
 const rootDirPlaceholder = '<rootDir>'
+const localePlaceholder = '<locale>'
 
 const defaultConfig = {
   'client-id': '',
   'client-secret': '',
   'project-id': '',
   'base-url': '',
-  'pull-to': `${rootDirPlaceholder}/intl/pull/<locale>.json`,
-  'push-from': `${rootDirPlaceholder}/intl/push/<locale>.json`,
+  'pull-to': `${rootDirPlaceholder}/intl/pull/${localePlaceholder}.json`,
+  'push-from': `${rootDirPlaceholder}/intl/push/${localePlaceholder}.json`,
   'pull-format': 'jsonflat',
   'push-format': 'json',
 }
@@ -74,3 +75,5 @@ const getConf = () => {
 }
 
 export default getConf
+
+export { localePlaceholder }
