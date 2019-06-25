@@ -11,7 +11,7 @@ const defaultConfig = {
   'client-secret': '',
   'project-id': '',
   'base-url': '',
-  'pull-to': `${rootDirPlaceholder}/intl/pull/${localePlaceholder}.json`,
+  'pull-to': `${rootDirPlaceholder}/intl/pull/${localePlaceholder}.<hash:6>.json`,
   'push-from': `${rootDirPlaceholder}/intl/push/${localePlaceholder}.json`,
   'pull-format': 'jsonflat',
   'push-format': 'json',

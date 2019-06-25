@@ -29,6 +29,7 @@ Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
 
 * `<rootDir>` will be replaced with `/abs-path/project`
 * `<locale>` will be replaced respective of context, so that with `"locale": "de_DE"` the default `"pull-to": "<rootDir>/intl/pull/<locale>.json"` will become `"/abs-path/project/intl/pull/de_DE.json"`
+* `<hash:6>` will be replaced with the hash of the respective file, truncated at `6` characters
 
 | property | value  | | env var (default) |
 |----------|:-------------:|:-------------|:---:|
@@ -39,7 +40,7 @@ Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
 | `env-prefix` | `{String="TR"}` | Prefix to assume when interpolating environment variables for config options.  | n/a |
 | `locale` | `{String}` | locale for authoring translation terms | n/a |
 | `locales` | `{Array<String>}` | locales to obtain from traduora | n/a |
-| `pull-to` | `{String="<rootDir>/intl/pull/<locale>.json"}` | TBD| n/a |
+| `pull-to` | `{String="<rootDir>/intl/pull/<locale>.<hash:6>.json"}` | TBD| n/a |
 | `push-from` | `{GlobString="<rootDir>/intl/push/**/<locale>.json"}` | globbing TBD | n/a |
 | `pull-format` | `{String="jsonflat"}` | TBD | n/a |
 | `push-format` | `{String="json"}` | TBD | n/a |
