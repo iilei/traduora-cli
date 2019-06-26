@@ -97,13 +97,13 @@ Obtains the locale codes which have translations. For example the resulting  *./
 
 ## Options:
 
-Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
+Strings containing `<rootDir>`, `<locale>` or `<hash:\d+>` will be interpolated. Examples:
 
 _Given `package.json` resides at `/abs-path/project/package.json`:_
 
 * `<rootDir>` will be replaced with `/abs-path/project`
 * `<locale>` will be replaced respective of context, so that with `"locale": "de_DE"` the default `"pull-to": "<rootDir>/intl/pull/<locale>.json"` will become `"/abs-path/project/intl/pull/de_DE.json"`
-* `<hash:6>` will be replaced with the hash of the respective file, truncated at `6` characters
+* `<hash:6>` will be replaced with the hash of the respective file, shortened to `6` characters.
 
 | property | value  | | env var (default) |
 |----------|:-------------:|:-------------|:---:|
