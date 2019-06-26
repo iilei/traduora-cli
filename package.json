@@ -11,7 +11,8 @@
     "prebuild": "npm run eslint && npm test",
     "build": "NODE_ENV=production babel src --out-dir lib --ignore \"src/**/*.spec.js\"",
     "prepack": "node_modules/.bin/del lib ; npm run build",
-    "postbuild": "chmod +x lib/index.js"
+    "postbuild": "chmod +x lib/index.js",
+    "bin": "node --require dotenv/config ./lib/index.js"
   },
   "bin": {
     "traduora": "lib/index.js"
@@ -104,7 +105,8 @@
     "locale": "en_GB",
     "locales": [
       "de_DE",
-      "en_GB"
+      "en_GB",
+      "ar_AE"
     ]
   }
 }
