@@ -83,7 +83,7 @@ Obtains the locale codes which have translations. For example the resulting  *./
 
 Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
 
-**Given `package.json` resides at `/abs-path/project/package.json`:**
+_Given `package.json` resides at `/abs-path/project/package.json`:_
 
 * `<rootDir>` will be replaced with `/abs-path/project`
 * `<locale>` will be replaced respective of context, so that with `"locale": "de_DE"` the default `"pull-to": "<rootDir>/intl/pull/<locale>.json"` will become `"/abs-path/project/intl/pull/de_DE.json"`
@@ -109,7 +109,7 @@ Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
 Until traduora reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
 
 
-### Recommended
+## Recommended
 
 Using React? [react-intl](https://github.com/formatjs/react-intl) and [Extract Intl messages](https://github.com/akameco/extract-react-intl-messages)
 Using Eslint? [Prevent usage of string literals in JSX (react/jsx-no-literals)](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-literals.md)

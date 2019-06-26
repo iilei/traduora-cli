@@ -61,6 +61,11 @@ const getConf = () => {
     ],
   })
   const explorerSearchResult = explorer.searchSync()
+
+  if (!explorerSearchResult) {
+    throw new Error('No .traduorarc file or entry found')
+  }
+
   const {
     filepath,
     config: { 'root-dir': rootDir },

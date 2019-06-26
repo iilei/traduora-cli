@@ -1,15 +1,17 @@
 {
   "name": "traduora-cli",
-  "version": "0.0.1-canary-001-preview",
+  "version": "0.0.1-canary-001",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
     "tdd": "test --watch",
     "test": "jest",
     "start": "node --require @babel/register ./src/index.js ",
-    "eslint": "eslint src __mocks__",
-    "build": "babel src --out-dir lib --ignore \"src/**/*.spec.js\"",
-    "prepack": "node_modules/.bin/del lib ; npm run build"
+    "eslint": "eslint src __mocks__ .babelrc.js",
+    "prebuild": "npm run eslint && npm test",
+    "build": "NODE_ENV=production babel src --out-dir lib --ignore \"src/**/*.spec.js\"",
+    "prepack": "node_modules/.bin/del lib ; npm run build",
+    "postbuild": "chmod +x lib/index.js"
   },
   "bin": {
     "traduora": "lib/index.js"
@@ -32,6 +34,7 @@
     "@babel/register": "^7.4.4",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
+    "babel-plugin-shebang": "^1.0.0",
     "del-cli": "^2.0.0",
     "dotenv": "^8.0.0",
     "eslint": "^6.0.0",
