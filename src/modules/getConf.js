@@ -12,7 +12,7 @@ const defaultConfig = {
   'project-id': '',
   'base-url': '',
   'pull-to': `${rootDirPlaceholder}/intl/pull/${localePlaceholder}.<hash:6>.json`,
-  'push-from': `${rootDirPlaceholder}/intl/push/${localePlaceholder}.json`,
+  'push-from': [`${rootDirPlaceholder}/intl/push/${localePlaceholder}.json`],
   'pull-format': 'jsonflat',
   'push-format': 'json',
 }
@@ -31,6 +31,20 @@ const expandRootDirs = rootDir => (acc, [key, val]) => ({
   ...acc,
   [key]: conditionalExpandRoot(val, rootDir),
 })
+
+const validatePushFrom = array => {
+  // needs at least one file
+  if (!array.length || typeof array === 'string') {
+    console.warn(`config 'push-from' not set properly`)
+  }
+}
+
+const validateGlobMatches = (paths, globPaths) => {
+  // needs at least one file
+  if (!paths.length) {
+    console.warn(`Globby yields no matches for${globPaths.map(p => `\n  - ${p}`)}`)
+  }
+}
 
 const getConf = () => {
   const explorer = cosmiconfig('traduora', {
@@ -76,4 +90,4 @@ const getConf = () => {
 
 export default getConf
 
-export { localePlaceholder }
+export { localePlaceholder, expandRootDir, validatePushFrom, validateGlobMatches }

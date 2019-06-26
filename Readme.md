@@ -21,7 +21,29 @@ prefixed with `TR`. E.g `TR_BASE_URL` is equivalent to `base-url` in config file
 
 Note that the prefix itself is also configurable but it can not be set via environment variables.
 
-##### Options:
+## CLI Script
+
+### Pull
+
+To fetch the translated terms, run
+
+```bash
+traduora --task pull
+# short:
+traduora --t pull
+```
+
+### Push
+
+To perform remote creation for each new term found in `push-from`
+
+```bash
+traduora --task push
+# short:
+traduora --t push
+```
+
+## Options:
 
 Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
 
@@ -41,9 +63,9 @@ Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
 | `locale` | `{String}` | locale for authoring translation terms | n/a |
 | `locales` | `{Array<String>}` | locales to obtain from traduora | n/a |
 | `pull-to` | `{String="<rootDir>/intl/pull/<locale>.<hash:6>.json"}` | TBD| n/a |
-| `push-from` | `{GlobString="<rootDir>/intl/push/**/<locale>.json"}` | globbing TBD | n/a |
+| `push-from` | `{Array<GlobString}=["<rootDir>/intl/push/**/<locale>.json"]` | The interpolated Paths are serving as a pattern for [globby](https://www.npmjs.com/package/globby) | n/a |
 | `pull-format` | `{String="jsonflat"}` | TBD | n/a |
-| `push-format` | `{String="json"}` | TBD | n/a |
+| `push-format` | `{String="jsonflat"}` | At the time of writing, only `jsonflat` is supported | n/a |
 | `root-dir` | `{[String]}` | Means to override `<rootDir>`  | `TR_ROOT_DIR` |
 
 ## Semver

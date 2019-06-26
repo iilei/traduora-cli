@@ -13,12 +13,14 @@ const pull = async () => {
   const { 'pull-to': pullTo } = config
   const exports = await getExports().then(allExports => {
     return Object.entries(allExports).map(([key, terms]) => {
+      // In order to have reliable content hashes, sorting needs to be applied
+      const sorted = stringify(terms, { space: '  ' })
+      // replace <locale> with the respective locale name
+      const filePathTemplate = `${pullTo.replace(localePlaceholder, key)}`
+
       return {
         terms,
-        destination: insertHash(
-          `${pullTo.replace(localePlaceholder, key)}`,
-          stringify(terms, { space: '  ' }),
-        ),
+        destination: insertHash(filePathTemplate, sorted),
       }
     })
   })
