@@ -56,7 +56,13 @@ example
 
 ### translations
 
-Obtains the locale codes which have translations. Example `traduora --task translations --output ./locales.json` may write the following to *locales.json*
+```bash
+traduora --task translations --output ./locales.json
+# short:
+traduora --t translations -o ./locales.json
+```
+
+Obtains the locale codes which have translations. For example the resulting  *./locales.json* may look like
 
 ```json
 {
