@@ -23,6 +23,22 @@ Note that the prefix itself is also configurable but it can not be set via envir
 
 ## CLI Script
 
+CLI-Scripts are usable as npm scripts:
+
+Example package.json scripts:
+
+```json
+    "//": "make traduora cli accessible in the project directory context -> ease of use for build steps",
+    "traduora": "traduora"
+
+```
+
+If you want to have your environment defined in a `.env` file, you can use [dotenv](https://github.com/motdotla/dotenv), too:
+
+```json
+    "traduora": "node --require 'dotenv/config' ./node_modules/.bin/traduora"
+```
+
 ### pull
 
 To fetch the translated terms, run
