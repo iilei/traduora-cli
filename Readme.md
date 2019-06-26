@@ -46,7 +46,7 @@ To fetch the translated terms, run
 ```bash
 traduora --task pull
 # short:
-traduora --t pull
+traduora -t pull
 ```
 
 ### push
@@ -56,7 +56,7 @@ To perform remote creation for each new term found in `push-from`
 ```bash
 traduora --task push
 # short:
-traduora --t push
+traduora -t push
 ```
 
 Input files must be `jsonflat`. Input files are matched with glob patterns. The message keys must be unique across all aggregated files.
@@ -75,7 +75,7 @@ example
 ```bash
 traduora --task translations --output ./locales.json
 # short:
-traduora --t translations -o ./locales.json
+traduora -t translations -o ./locales.json
 ```
 
 Obtains the locale codes which have translations. For example the resulting  *./locales.json* may look like
