@@ -23,7 +23,7 @@ Note that the prefix itself is also configurable but it can not be set via envir
 
 ## CLI Script
 
-### Pull
+### pull
 
 To fetch the translated terms, run
 
@@ -33,7 +33,7 @@ traduora --task pull
 traduora --t pull
 ```
 
-### Push
+### push
 
 To perform remote creation for each new term found in `push-from`
 
@@ -51,6 +51,25 @@ example
 {
   "menu.home.button": "Home",
   "messages.welcome": "Welcome {user.displayName}"
+}
+```
+
+### translations
+
+Obtains the locale codes which have translations. Example `traduora --task translations --output ./locales.json` may write the following to *locales.json*
+
+```json
+{
+  "de_DE": {
+    "region": "Germany",
+    "language": "German",
+    "id": "0ab1eed9-f98a-465a-93fd-6b3a67353164"
+  },
+  "en_GB": {
+    "region": "United Kingdom",
+    "language": "English",
+    "id": "544b64bb-2679-41fb-b39b-5758edbe092a"
+  }
 }
 ```
 

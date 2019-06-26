@@ -5,6 +5,8 @@ const envPrefixProp = 'env-prefix'
 const rootDirProp = 'root-dir'
 const rootDirPlaceholder = '<rootDir>'
 const localePlaceholder = '<locale>'
+const indentSize = 2
+const writeOpts = { encoding: 'utf8', flag: 'w' }
 
 const defaultConfig = {
   'client-id': '',
@@ -90,4 +92,11 @@ const getConf = () => {
 
 export default getConf
 
-export { localePlaceholder, expandRootDir, validatePushFrom, validateGlobMatches }
+export {
+  writeOpts,
+  indentSize,
+  localePlaceholder,
+  expandRootDir,
+  validatePushFrom,
+  validateGlobMatches,
+}

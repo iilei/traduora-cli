@@ -33,7 +33,11 @@ describe('getLocales', () => {
     mockAxios.mockResponse(responseObj)
     expect(mockAxios.get).toHaveBeenCalledWith('/translations')
     expect(await terms).toEqual({
-      de_DE: '0ab1eed9-f98a-xyz-uuid-de_DE',
+      de_DE: {
+        id: '0ab1eed9-f98a-xyz-uuid-de_DE',
+        language: 'German',
+        region: 'Germany',
+      },
     })
   })
 })

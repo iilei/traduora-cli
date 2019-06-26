@@ -23,7 +23,7 @@ describe('index', () => {
 
     it('should execute the runner with corresponding arg', () => {
       require('./index')
-      expect(runner.mock.calls).toEqual([['push']])
+      expect(runner.mock.calls[0][0]).toEqual('push')
     })
   })
 })
