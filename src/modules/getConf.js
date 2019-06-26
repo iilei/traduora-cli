@@ -7,6 +7,7 @@ const rootDirPlaceholder = '<rootDir>'
 const localePlaceholder = '<locale>'
 const indentSize = 2
 const writeOpts = { encoding: 'utf8', flag: 'w' }
+const hashToken = /<hash:(\d+)>/
 
 const defaultConfig = {
   'client-id': '',
@@ -104,4 +105,5 @@ export {
   expandRootDir,
   validatePushFrom,
   validateGlobMatches,
+  hashToken,
 }

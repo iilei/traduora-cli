@@ -1,4 +1,6 @@
 import crypto from 'crypto'
+
+import { hashToken } from './getConf'
 /**
  *
  * @param {String} template
@@ -6,7 +8,7 @@ import crypto from 'crypto'
  * @returns {String}
  */
 const insertHash = (template, contents) => {
-  return template.replace(/<hash:(\d+)>/, (match, chars) =>
+  return template.replace(hashToken, (match, chars) =>
     crypto
       .createHash('md5')
       .update(contents)

@@ -101,6 +101,7 @@
     "singleQuote": true
   },
   "traduora": {
+    "pull-to": "<rootDir>/intl/pull/<locale>.<hash:4>.json",
     "client-id": "test",
     "locale": "en_GB",
     "locales": [

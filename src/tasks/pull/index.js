@@ -8,9 +8,25 @@ import insertHash from '../../modules/insertHash'
 
 import getExports from '../../modules/getExports'
 import config from '../../modules/config'
-import { localePlaceholder, indentSize, writeOpts } from '../../modules/getConf'
+import { localePlaceholder, indentSize, writeOpts, hashToken } from '../../modules/getConf'
 
 const writeFile = promisify(fs.writeFile)
+
+const writePromises = exports =>
+  exports.map(async ({ terms, destination }) => {
+    writeFile(destination, stringify(terms, { space: indentSize }), writeOpts)
+    return destination
+  })
+
+const writeSummary = (localeMap, destinations) => {
+  _uniq(destinations.map(dest => dirname(dest))).map(destination =>
+    writeFile(
+      join(destination, 'map.json'),
+      stringify(localeMap, { space: indentSize }),
+      writeOpts,
+    ),
+  )
+}
 
 const pull = async () => {
   const { 'pull-to': pullTo } = config
@@ -32,19 +48,10 @@ const pull = async () => {
     })
   })
 
-  const writePromises = exports.map(async ({ terms, destination }) => {
-    writeFile(destination, stringify(terms, { space: indentSize }), writeOpts)
-    return destination
-  })
-
-  await Promise.all(writePromises).then(destinations => {
-    _uniq(destinations.map(dest => dirname(dest))).map(destination =>
-      writeFile(
-        join(destination, 'map.json'),
-        stringify(localeMap, { space: indentSize }),
-        writeOpts,
-      ),
-    )
+  await Promise.all(writePromises(exports)).then(destinations => {
+    if (pullTo.match(hashToken)) {
+      writeSummary(localeMap, destinations)
+    }
   })
 }
 
