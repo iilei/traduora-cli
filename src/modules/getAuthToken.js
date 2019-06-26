@@ -17,7 +17,8 @@ const getAuthToken = async config => {
         config: { data },
       } = error.toJSON()
       const record = { [name.toLowerCase()]: { message, data } }
-      console.log(JSON.stringify(record, null, 2))
+      console.error(JSON.stringify(record, null, 2))
+      process.exit(401)
     })
 }
 

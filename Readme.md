@@ -43,6 +43,17 @@ traduora --task push
 traduora --t push
 ```
 
+Input files must be `jsonflat`. Input files are matched with glob patterns. The message keys must be unique across all aggregated files.
+
+example
+
+```json
+{
+  "menu.home.button": "Home",
+  "messages.welcome": "Welcome {user.displayName}"
+}
+```
+
 ## Options:
 
 Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
@@ -71,3 +82,9 @@ Strings containing `<rootDir>` and `<locale>` will be interpolated. Examples:
 ## Semver
 
 Until traduora reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
+
+
+### Recommended
+
+Using React? [react-intl](https://github.com/formatjs/react-intl) and [Extract Intl messages](https://github.com/akameco/extract-react-intl-messages)
+Using Eslint? [Prevent usage of string literals in JSX (react/jsx-no-literals)](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-literals.md)

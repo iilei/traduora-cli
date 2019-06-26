@@ -1,7 +1,12 @@
 import globby from 'globby'
+import { omit as _omit } from 'lodash'
+
+import config from '../../modules/config'
 
 import getTerms from '../../modules/getTerms'
-import config from '../../modules/config'
+import getContents from '../../modules/getContents'
+import initializeTerm from '../../modules/initializeTerm'
+
 import {
   expandRootDir,
   validatePushFrom,
@@ -22,12 +27,18 @@ const push = async () => {
   const paths = await globby(globPaths)
   validateGlobMatches(paths, globPaths)
 
-  // next: collect terms and their initial values in authoring locale
+  // Collect terms and their initial values in authoring locale
+  const contents = _omit(await getContents(paths), exclude)
 
-  // filter for !exclude.includes()
+  if (Object.keys(contents).length) {
+    console.info(`Created terms in ${locale}:\n${JSON.stringify(contents, null, 2)}`)
+  } else {
+    console.info('No translation terms to create')
+  }
 
-  // promise CreateAndInit - creates term,  then patches /translations/<locale> { termId: response.data.data.id , value }
-  console.log(exclude)
+  const initializations = Object.entries(contents).map(([key, value]) => initializeTerm(key, value))
+
+  await Promise.all(initializations)
 }
 
 export default push

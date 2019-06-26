@@ -21,6 +21,7 @@
     "cosmiconfig": "^5.2.1",
     "globby": "^9.2.0",
     "json-stable-stringify": "^1.0.1",
+    "lodash": "^4.17.11",
     "yargs": "^13.2.4"
   },
   "devDependencies": {

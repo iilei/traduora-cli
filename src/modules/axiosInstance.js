@@ -24,5 +24,21 @@ const axiosGet = async path =>
       throw new Error(err)
     })
 
+const axiosPost = async (path, data) =>
+  instance
+    .post(path, data)
+    .then(result => result.data)
+    .catch(err => {
+      throw new Error(err)
+    })
+
+const axiosPatch = async (path, data) =>
+  instance
+    .patch(path, data)
+    .then(result => result.data)
+    .catch(err => {
+      throw new Error(err)
+    })
+
 export default instance
-export { setAuthToken, setBaseUrl, axiosGet }
+export { setAuthToken, setBaseUrl, axiosGet, axiosPost, axiosPatch }
