@@ -1,8 +1,13 @@
 # Traduora CLI
 
+CLI for [traduora translation management](https://docs.traduora.com)
+
 ### Work in progress
 
 The current release is work in progress, releases `0.0.x-canary-*` are experimental.
+
+Testet on a mac and expected to work on any system. Please report potential flaws which might happen especially on windows.
+
 
 ### Config
 
@@ -120,10 +125,11 @@ Strings containing `<rootDir>`, `<locale>` or `<hash:\d+>` will be interpolated.
 
 ## Semver
 
-Until traduora reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
+Until traduora-cli reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
 
 
 ## Recommended
 
 Using React? [react-intl](https://github.com/formatjs/react-intl) and [Extract Intl messages](https://github.com/akameco/extract-react-intl-messages)
+
 Using Eslint? [Prevent usage of string literals in JSX (react/jsx-no-literals)](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-literals.md)
