@@ -75,6 +75,36 @@ example
 }
 ```
 
+### <span id="jq-hint">How to use a unsuited input json schema</span>
+
+In order to transform the output of [babel-plugin-react-intl](https://www.npmjs.com/package/babel-plugin-react-intl) to the desired format, consider using [jq](https://stedolan.github.io/jq/).
+
+As an example
+
+```bash
+jq --slurp --sort-keys \
+  'add | reduce .[] as $item ({} ; . + {"\($item.id)": $item.defaultMessage})' \
+   ./intl/push/**/*.json \
+   >| intl/push/aggregated.jsonflat
+```
+
+Or, as npm scripts;
+
+```
+...
+  "traduora": "node --require 'dotenv/config' ./node_modules/.bin/traduora"
+  "preintl:push": "jq --slurp --sort-keys 'add | reduce .[] as $item ({} ; . + {\"\\($item.id)\": $item.defaultMessage})' $(find ./intl/push/* -name \"*.json\") >| build/messages/aggregated.jsonflat",
+  "intl:push": "npm run traduora -- -t push",
+```
+
+In conjunction with traduora-config
+
+```
+"push-from": [
+  "<rootDir>/intl/push/aggregated.jsonflat"
+],
+```
+
 ### translations
 
 ```bash
@@ -120,7 +150,7 @@ Strings containing `<rootDir>`, `<locale>` or `<hash:\d+>` will be interpolated.
 | `pull-to` | `{String="<rootDir>/intl/pull/<locale>.<hash:6>.json"}` | TBD| n/a |
 | `push-from` | `{Array<GlobString}=["<rootDir>/intl/push/**/<locale>.json"]` | The interpolated Paths are serving as a pattern for [globby](https://www.npmjs.com/package/globby) | n/a |
 | `pull-format` | `{String="jsonflat"}` | TBD | n/a |
-| `push-format` | `{String="jsonflat"}` | At the time of writing, only `jsonflat` is supported | n/a |
+| `push-format` | `{String="jsonflat"}` | At the time of writing, only `jsonflat` is supported. See <a href="#jq-hint">hints on transforming</a> any input json schema | n/a |
 | `root-dir` | `{[String]}` | Means to override `<rootDir>`  | `TR_ROOT_DIR` |
 
 ## Semver
