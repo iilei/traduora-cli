@@ -88,7 +88,7 @@ jq --slurp --sort-keys \
    >| intl/push/aggregated.jsonflat
 ```
 
-Or, as npm scripts;
+Which might be used as a preliminary step ahead of pushing the translations to traduora. Combined with `dotenv`:
 
 ```
 ...
