@@ -16,9 +16,18 @@ import {
 
 const { locale, 'push-from': pushFrom, 'root-dir': rootDir } = config
 
+const aggregateReport = (reports, negate = 0) =>
+  reports.reduce((acc, cur) => {
+    if (Boolean(cur.error) !== Boolean(negate)) {
+      return acc
+    }
+    return { ...acc, [cur.key]: cur.value }
+  }, {})
+
 const push = async () => {
   validatePushFrom(pushFrom)
 
+  const reports = []
   const exclude = Object.keys(await getTerms())
 
   const globPaths = pushFrom.map(template =>
@@ -33,8 +42,6 @@ const push = async () => {
 
   const initializations = Object.entries(contents).map(([key, value]) => initializeTerm(key, value))
 
-  const reports = []
-
   // execute sequentially, otherwise API calls end up with 500 errors too often
   await initializations.reduce((acc, cur) => {
     return acc.then(async () => {
@@ -42,19 +49,9 @@ const push = async () => {
     })
   }, Promise.resolve())
 
-  const succeeded = reports.reduce((acc, cur) => {
-    if (cur.error) {
-      return acc
-    }
-    return { ...acc, [cur.key]: cur.value }
-  }, {})
+  const succeeded = aggregateReport(reports)
 
-  const failed = reports.reduce((acc, cur) => {
-    if (!cur.error) {
-      return acc
-    }
-    return { ...acc, [cur.key]: cur.value }
-  }, {})
+  const failed = aggregateReport(reports, 1)
 
   if (reports.length) {
     if (Object.keys(succeeded).length) {
