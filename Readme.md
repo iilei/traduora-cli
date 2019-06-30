@@ -142,6 +142,7 @@ Strings containing `<rootDir>`, `<locale>` or `<hash:\d+>` will be interpolated.
 | `push-from` | `{GlobString,Array<GlobString}=["<rootDir>/intl/push/**/<locale>.json"]` | The interpolated Paths are serving as a pattern for [globby](https://www.npmjs.com/package/globby) | n/a |
 | `pull-format` | `{String="jsonflat"}` | TBD | n/a |
 | `root-dir` | `{[String]}` | Means to override `<rootDir>` | `TR_ROOT_DIR` |
+| `max-retry` | `{Integer=5}` | Retries if API calls fail | n/a | 
 
 ## Semver
 
