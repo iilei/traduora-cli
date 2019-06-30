@@ -17,7 +17,6 @@ const defaultConfig = {
   'pull-to': `${rootDirPlaceholder}/intl/pull/${localePlaceholder}.<hash:6>.json`,
   'push-from': [`${rootDirPlaceholder}/intl/push/${localePlaceholder}.json`],
   'pull-format': 'jsonflat',
-  'push-format': 'json',
 }
 
 const mayBeEnv = ['client-id', 'client-secret', 'project-id', 'base-url', 'root-dir']
@@ -92,6 +91,10 @@ const getConf = () => {
   })
 
   config = Object.entries(config).reduce(expandRootDirs(config[rootDirProp]), {})
+
+  if (!Array.isArray(config['push-from'])) {
+    config['push-from'] = [config['push-from']]
+  }
 
   return config
 }

@@ -100,9 +100,7 @@ Which might be used as a preliminary step ahead of pushing the translations to t
 In conjunction with traduora-config
 
 ```
-"push-from": [
-  "<rootDir>/intl/push/aggregated.jsonflat"
-],
+"push-from": "<rootDir>/intl/push/aggregated.jsonflat",
 ```
 
 ### translations
@@ -148,18 +146,23 @@ Strings containing `<rootDir>`, `<locale>` or `<hash:\d+>` will be interpolated.
 | `locale` | `{String}` | locale for authoring translation terms | n/a |
 | `locales` | `{Array<String>}` | locales to obtain from traduora | n/a |
 | `pull-to` | `{String="<rootDir>/intl/pull/<locale>.<hash:6>.json"}` | TBD| n/a |
-| `push-from` | `{Array<GlobString}=["<rootDir>/intl/push/**/<locale>.json"]` | The interpolated Paths are serving as a pattern for [globby](https://www.npmjs.com/package/globby) | n/a |
+| `push-from` | `{GlobString,Array<GlobString}=["<rootDir>/intl/push/**/<locale>.json"]` | The interpolated Paths are serving as a pattern for [globby](https://www.npmjs.com/package/globby) | n/a |
 | `pull-format` | `{String="jsonflat"}` | TBD | n/a |
-| `push-format` | `{String="jsonflat"}` | At the time of writing, only `jsonflat` is supported. See <a href="#jq-hint">hints on transforming</a> any input json schema | n/a |
-| `root-dir` | `{[String]}` | Means to override `<rootDir>`  | `TR_ROOT_DIR` |
+| `root-dir` | `{[String]}` | Means to override `<rootDir>` | `TR_ROOT_DIR` |
 
 ## Semver
 
 Until traduora-cli reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
 
+## Recommendations
 
-## Recommended
+### Using React?
 
-Using React? [react-intl](https://github.com/formatjs/react-intl) and [Extract Intl messages](https://github.com/akameco/extract-react-intl-messages)
+Let your react components be the source of truth where i18n key-value pairs come to existence. Try
 
-Using Eslint? [Prevent usage of string literals in JSX (react/jsx-no-literals)](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-literals.md)
+* [react-intl](https://github.com/formatjs/react-intl) and
+* [Extract Intl messages](https://github.com/akameco/extract-react-intl-messages)
+
+#### Using Eslint?
+
+* [Prevent usage of string literals in JSX (react/jsx-no-literals)](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-literals.md)
