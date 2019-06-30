@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import config from './config'
 
-const { 'base-url': baseURL } = config
+const { 'base-url': baseURL, 'max-retry': maxRetry } = config
 
 const instance = axios.create({
   baseURL,
@@ -16,7 +16,7 @@ const setBaseUrl = baseUrl => {
   instance.defaults.baseURL = baseUrl
 }
 
-const retry = promise => async (path, data, n = 5) => {
+const retry = promise => async (path, data, n = maxRetry) => {
   try {
     return await promise(path, data)
   } catch (err) {

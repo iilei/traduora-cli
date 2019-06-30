@@ -1,6 +1,6 @@
 {
   "name": "traduora-cli",
-  "version": "0.0.1-canary-003",
+  "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {

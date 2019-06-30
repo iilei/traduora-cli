@@ -2,13 +2,6 @@
 
 CLI for [traduora translation management](https://docs.traduora.com)
 
-### Work in progress
-
-The current release is work in progress, releases `0.0.x-canary-*` are experimental.
-
-Testet on a mac and expected to work on any system. Please report potential flaws which might happen especially on windows.
-
-
 ### Config
 
 Options are set using one of the following

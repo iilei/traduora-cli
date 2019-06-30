@@ -10,6 +10,7 @@ const writeOpts = { encoding: 'utf8', flag: 'w' }
 const hashToken = /<hash:(\d+)>/
 
 const defaultConfig = {
+  'max-retry': 5,
   'client-id': '',
   'client-secret': '',
   'project-id': '',
@@ -19,7 +20,7 @@ const defaultConfig = {
   'pull-format': 'jsonflat',
 }
 
-const mayBeEnv = ['client-id', 'client-secret', 'project-id', 'base-url', 'root-dir']
+const mayBeEnv = ['client-id', 'client-secret', 'project-id', 'base-url', 'root-dir', 'max-retry']
 
 const toEnvVar = key => key.toUpperCase().replace('-', '_')
 const toPrefixedEnvVar = (envPrefix, value) =>
@@ -28,7 +29,7 @@ const findProperty = (envVar, envPrefix, config) =>
   Object.keys(config).find(value => toPrefixedEnvVar(envPrefix, value) === envVar)
 const expandRootDir = (str, rootDir) => path.normalize(str.replace(rootDirPlaceholder, rootDir))
 const conditionalExpandRoot = (val, rootDir) =>
-  val.includes(rootDirPlaceholder) && typeof val === 'string' ? expandRootDir(val, rootDir) : val
+  typeof val === 'string' && val.includes(rootDirPlaceholder) ? expandRootDir(val, rootDir) : val
 const expandRootDirs = rootDir => (acc, [key, val]) => ({
   ...acc,
   [key]: conditionalExpandRoot(val, rootDir),
@@ -90,11 +91,13 @@ const getConf = () => {
     }
   })
 
-  config = Object.entries(config).reduce(expandRootDirs(config[rootDirProp]), {})
-
   if (!Array.isArray(config['push-from'])) {
     config['push-from'] = [config['push-from']]
   }
+
+  config = Object.entries(config).reduce(expandRootDirs(config[rootDirProp]), {})
+
+  config['max-retry'] = Math.max(1, parseInt(config['max-retry'], 10) || 0)
 
   return config
 }
