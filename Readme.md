@@ -1,6 +1,6 @@
 # Traduora CLI
 
-CLI for [traduora translation management](https://docs.traduora.com)
+CLI for [traduora translation management](https://docs.traduora.com) at (current) version [0.10.0](https://github.com/traduora/traduora/tree/0.10.0)
 
 ### Config
 
