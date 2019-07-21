@@ -12,7 +12,9 @@
     "build": "NODE_ENV=production babel src --out-dir lib --ignore \"src/**/*.spec.js\"",
     "prepack": "node_modules/.bin/del lib ; npm run build",
     "postbuild": "chmod +x lib/index.js",
-    "bin": "node --require dotenv/config ./lib/index.js"
+    "bin": "node --require dotenv/config ./lib/index.js",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "bin": {
     "traduora": "lib/index.js"
@@ -22,31 +24,31 @@
   "dependencies": {
     "axios": "^0.19.0",
     "cosmiconfig": "^5.2.1",
-    "globby": "^9.2.0",
+    "globby": "^10.0.1",
     "json-stable-stringify": "^1.0.1",
-    "lodash": "^4.17.11",
-    "yargs": "^13.2.4"
+    "lodash": "^4.17.15",
+    "yargs": "^13.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/register": "^7.4.4",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
     "babel-plugin-shebang": "^1.0.0",
     "del-cli": "^2.0.0",
     "dotenv": "^8.0.0",
-    "eslint": "^6.0.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^5.0.0",
-    "eslint-plugin-import": "^2.17.3",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.0",
-    "husky": "^2.4.1",
+    "husky": "^3.0.1",
     "jest": "^24.8.0",
     "jest-mock-axios": "^3.0.0",
-    "lint-staged": "^8.2.1",
+    "lint-staged": "^9.2.0",
     "prettier": "^1.18.2"
   },
   "jest": {
