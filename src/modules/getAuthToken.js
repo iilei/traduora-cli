@@ -3,9 +3,9 @@ import axios from './axiosInstance'
 const getAuthToken = async config => {
   return axios
     .post('/auth/token', {
-      grantType: 'client_credentials',
-      clientId: config['client-id'],
-      clientSecret: config['client-secret'],
+      grant_type: 'client_credentials',
+      client_id: config['client-id'],
+      client_secret: config['client-secret'],
     })
     .then(response => {
       return response.data.data.accessToken
