@@ -8,7 +8,7 @@ const getAuthToken = async config => {
       clientSecret: config['client-secret'],
     })
     .then(response => {
-      return response.data.data.accessToken
+      return response.data.access_token
     })
     .catch(error => {
       const {
