@@ -35,7 +35,7 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
-    "babel-eslint": "^10.0.2",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-shebang": "^1.0.0",
     "del-cli": "^2.0.0",
