@@ -10,6 +10,7 @@ const writeOpts = { encoding: 'utf8', flag: 'w' }
 const hashToken = /<hash:(\d+)>/
 
 const defaultConfig = {
+  'base-path': '/api/v1',
   'max-retry': 5,
   'client-id': '',
   'client-secret': '',
@@ -18,9 +19,18 @@ const defaultConfig = {
   'pull-to': `${rootDirPlaceholder}/intl/pull/${localePlaceholder}.<hash:6>.json`,
   'push-from': [`${rootDirPlaceholder}/intl/push/${localePlaceholder}.json`],
   'pull-format': 'jsonflat',
+  'version-check': ['0.13.0'],
 }
 
-const mayBeEnv = ['client-id', 'client-secret', 'project-id', 'base-url', 'root-dir', 'max-retry']
+const mayBeEnv = [
+  'client-id',
+  'client-secret',
+  'project-id',
+  'base-url',
+  'root-dir',
+  'max-retry',
+  'base-path',
+]
 
 const toEnvVar = key => key.toUpperCase().replace('-', '_')
 const toPrefixedEnvVar = (envPrefix, value) =>

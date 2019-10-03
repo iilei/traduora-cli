@@ -26,7 +26,8 @@ describe('getConf with default env-prefix', () => {
     expect(getConf()).toEqual(
       expect.objectContaining({
         'client-id': 'test',
-        'base-url': 'https://traduora.example.com/some-path/',
+        'base-url': 'https://traduora.example.com/',
+        'base-path': '/some-path/',
       }),
     )
   })

@@ -22,12 +22,14 @@
         ignore:
           - 0
           - 1
+          - 2
     valid-jsdoc:
       - warn
     import/no-extraneous-dependencies:
       - warn
       - devDependencies:
         - "**/*.spec.js"
+        - "**/__mocks__/**"
   overrides:
     -
       files:

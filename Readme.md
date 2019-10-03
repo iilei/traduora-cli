@@ -134,7 +134,8 @@ Strings containing `<rootDir>`, `<locale>` or `<hash:\d+>` will be interpolated.
 | `client-id` | `{String}` | client id for the client credentials flow | `TR_CIENT_ID` |
 | `client-secret`| `{String}` | **Warning** *take care not to expose it in version control* <br> client key for the client credentials flow | `TR_CIENT_SECRET` |
 | `project-id` | `{String}` | traduora project ID | `TR_PROJECT_ID` |
-| `base-url` | `{String}` | `<scheme>://<host>/<basePath>` – e.g. `https://traduora.example.com/api/v1/` | `TR_BASE_URL` |
+| `base-url` | `{String}` | `<scheme>://<host>/<basePath>` – e.g. `https://traduora.example.com/` | `TR_BASE_URL` |
+| `base-path` | `{String}` | most likely `/api/v1/` is correct | `TR_BASE_PATH` |
 | `env-prefix` | `{String="TR"}` | Prefix to assume when interpolating environment variables for config options.  | n/a |
 | `locale` | `{String}` | locale for authoring translation terms | n/a |
 | `locales` | `{Array<String>}` | locales to obtain from traduora | n/a |

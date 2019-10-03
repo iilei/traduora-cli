@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import config from './config'
+import cleanPath from './cleanPath'
 
 const { 'base-url': baseURL, 'max-retry': maxRetry } = config
 
@@ -12,8 +13,15 @@ const setAuthToken = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`
 }
 
-const setBaseUrl = baseUrl => {
+const setBaseUrl = (baseUrl = config['base-url']) => {
   instance.defaults.baseURL = baseUrl
+  console.log(`baseURL set to ${instance.defaults.baseURL}`)
+}
+
+const appendBasePath = (append = '') => {
+  const current = instance.defaults.baseURL
+  instance.defaults.baseURL = cleanPath(current, append)
+  console.log(`baseURL set to ${instance.defaults.baseURL}`)
 }
 
 const retry = promise => async (path, data, n = maxRetry) => {
@@ -34,4 +42,4 @@ const axiosPost = async (path, data) => instance.post(path, data).then(result =>
 const axiosPatch = async (path, data) => instance.patch(path, data).then(result => result.data)
 
 export default instance
-export { setAuthToken, setBaseUrl, axiosGet, axiosPost, axiosPatch, retry }
+export { setAuthToken, setBaseUrl, appendBasePath, axiosGet, axiosPost, axiosPatch, retry }
