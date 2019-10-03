@@ -8,9 +8,9 @@
     "test": "jest",
     "start": "node --require @babel/register ./src/index.js ",
     "eslint": "eslint src __mocks__ .babelrc.js",
-    "prebuild": "npm run eslint && npm test",
-    "build": "NODE_ENV=production babel src --out-dir lib --ignore \"src/**/*.spec.js\"",
-    "prepack": "node_modules/.bin/del lib ; npm run build",
+    "prebuild": "npm run eslint && npm test && node_modules/.bin/del lib ;",
+    "build": "NODE_ENV=production babel src --out-dir lib --ignore \"src/**/*.spec.js\" --ignore \"**/__mocks__/**\"",
+    "prepack": "npm run build",
     "postbuild": "chmod +x lib/index.js",
     "bin": "node --require dotenv/config ./lib/index.js",
     "version": "npm run build",
@@ -57,11 +57,13 @@
       "<rootDir>/lib/"
     ],
     "coverageDirectory": "<rootDir>/coverage",
-    "collectCoverage": false,
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.js",
       "!coverage/**/*",
-      "!lib/**/*"
+      "!lib/**/*",
+      "!**/__mocks__/**",
+      "!**/*.spec.js"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/jestsetup.js"
