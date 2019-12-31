@@ -19,7 +19,7 @@ const defaultConfig = {
   'pull-to': `${rootDirPlaceholder}/intl/pull/${localePlaceholder}.<hash:6>.json`,
   'push-from': [`${rootDirPlaceholder}/intl/push/${localePlaceholder}.json`],
   'pull-format': 'jsonflat',
-  'version-check': ['0.14.0', '0.13.0'],
+  'version-check': ['0.15.0', '0.14.0', '0.13.0'],
 }
 
 const mayBeEnv = [
