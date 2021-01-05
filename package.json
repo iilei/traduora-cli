@@ -22,7 +22,7 @@
   "author": "Jochen Preusche <iilei@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "cosmiconfig": "^7.0.0",
     "globby": "^11.0.1",
     "json-stable-stringify": "^1.0.1",
